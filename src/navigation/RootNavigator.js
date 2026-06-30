@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBar from './TabBar';
 import WelcomeScreen from '../screens/WelcomeScreen';
+import OnboardingScreen from '../screens/OnboardingScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LessonsScreen from '../screens/LessonsScreen';
 import ScanScreen from '../screens/ScanScreen';
@@ -33,6 +34,7 @@ export default function RootNavigator() {
   return (
     <Stack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
+      <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       <Stack.Screen name="Main" component={MainTabs} />
       <Stack.Group screenOptions={{ presentation: 'modal', animation: 'slide_from_bottom' }}>
         <Stack.Screen name="LessonPlayer" component={LessonPlayerScreen} />

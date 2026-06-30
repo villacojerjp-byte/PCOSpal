@@ -17,7 +17,7 @@ export default function WelcomeScreen({ navigation }) {
       <View style={{ flex: 1, paddingTop: insets.top + 30, paddingBottom: insets.bottom + 24, paddingHorizontal: 28, alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Brand */}
         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 8 }}>
-          <View style={{ backgroundColor: 'rgba(255,255,255,0.18)', borderRadius: 16, padding: 4 }}>
+          <View style={{ backgroundColor: 'rgba(255,255,255,0.92)', borderRadius: 16, padding: 5 }}>
             <PalMascot size={40} />
           </View>
           <AppText font={fonts.displayBold} color={colors.white} style={{ fontSize: 24, marginLeft: 10 }}>
@@ -51,7 +51,7 @@ export default function WelcomeScreen({ navigation }) {
         {/* CTA */}
         <View style={{ width: '100%' }}>
           <Pressable
-            onPress={() => navigation.replace('Main')}
+            onPress={() => navigation.navigate('Onboarding')}
             style={[{ backgroundColor: colors.white, borderRadius: radius.pill, height: 58, alignItems: 'center', justifyContent: 'center' }, shadow.floating]}
           >
             <AppText font={fonts.displaySemiBold} color={colors.primary} style={{ fontSize: 18 }}>

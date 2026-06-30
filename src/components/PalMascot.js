@@ -1,13 +1,14 @@
 import Svg, { Defs, LinearGradient, Stop, Path, Circle, Ellipse, Rect } from 'react-native-svg';
 
-// The PCOS Pal cherry mascot, drawn as resolution-independent SVG.
+// The PCOS Pal berry mascot, drawn as resolution-independent SVG.
+// Body is purple to match the brand theme; leaves stay green for contrast.
 export default function PalMascot({ size = 96 }) {
   return (
     <Svg width={size} height={size} viewBox="0 0 100 100">
       <Defs>
         <LinearGradient id="body" x1="0" y1="0" x2="0" y2="1">
-          <Stop offset="0" stopColor="#FF6B8A" />
-          <Stop offset="1" stopColor="#F0145C" />
+          <Stop offset="0" stopColor="#A78BFA" />
+          <Stop offset="1" stopColor="#7C3AED" />
         </LinearGradient>
         <LinearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
           <Stop offset="0" stopColor="#3BC9A6" />
@@ -34,17 +35,17 @@ export default function PalMascot({ size = 96 }) {
       {/* eyes */}
       <Circle cx={40} cy={56} r={11} fill="#FFFFFF" />
       <Circle cx={62} cy={56} r={11} fill="#FFFFFF" />
-      <Circle cx={42} cy={58} r={6} fill="#7A0E33" />
-      <Circle cx={64} cy={58} r={6} fill="#7A0E33" />
+      <Circle cx={42} cy={58} r={6} fill="#2A1163" />
+      <Circle cx={64} cy={58} r={6} fill="#2A1163" />
       <Circle cx={44} cy={56} r={2} fill="#FFFFFF" />
       <Circle cx={66} cy={56} r={2} fill="#FFFFFF" />
 
       {/* cheeks */}
-      <Ellipse cx={32} cy={70} rx={5} ry={3.4} fill="#FF9BB0" opacity={0.85} />
-      <Ellipse cx={70} cy={70} rx={5} ry={3.4} fill="#FF9BB0" opacity={0.85} />
+      <Ellipse cx={32} cy={70} rx={5} ry={3.4} fill="#E7B9FF" opacity={0.9} />
+      <Ellipse cx={70} cy={70} rx={5} ry={3.4} fill="#E7B9FF" opacity={0.9} />
 
       {/* smile */}
-      <Path d="M45 70 C49 75 57 75 61 70" stroke="#7A0E33" strokeWidth={3.4} strokeLinecap="round" fill="none" />
+      <Path d="M45 70 C49 75 57 75 61 70" stroke="#2A1163" strokeWidth={3.4} strokeLinecap="round" fill="none" />
     </Svg>
   );
 }
