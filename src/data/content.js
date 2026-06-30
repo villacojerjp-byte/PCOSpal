@@ -208,16 +208,18 @@ export const logActions = [
   { id: 'cycle', label: 'Log Cycle', emoji: '🩸' },
 ];
 
+// Exercises use MaterialCommunityIcons human-pose icons (this is a no-equipment
+// bodyweight workout) instead of stock photos that wouldn't match the move.
 export const workout = {
   title: 'Metabolic Balance Builder',
   duration: '7 Min',
   equipment: 'No Equipment',
   exercises: [
-    { name: 'Dead Bugs', value: 29, unit: 'reps', image: img('1576678927484-cc907957088c', 300) },
-    { name: 'Warrior III Pose', value: 30, unit: 'sec', step: '2/5', image: img('1518611012118-696072aa579a', 300) },
-    { name: 'Glute Bridges', value: 15, unit: 'reps', step: '3/5', image: img('1571019613454-1cb2f99b2d8b', 300) },
-    { name: 'Bird Dogs', value: 12, unit: 'reps', step: '4/5', image: img('1599058917212-d750089bc07e', 300) },
-    { name: 'Child’s Pose', value: 45, unit: 'sec', step: '5/5', image: img('1545205597-3d9d02c29597', 300) },
+    { name: 'Dead Bugs', value: 29, unit: 'reps', icon: 'human-handsup', group: 'Core' },
+    { name: 'Warrior III Pose', value: 30, unit: 'sec', step: '2/5', icon: 'yoga', group: 'Balance' },
+    { name: 'Glute Bridges', value: 15, unit: 'reps', step: '3/5', icon: 'gymnastics', group: 'Lower body' },
+    { name: 'Bird Dogs', value: 12, unit: 'reps', step: '4/5', icon: 'yoga', group: 'Stability' },
+    { name: 'Child’s Pose', value: 45, unit: 'sec', step: '5/5', icon: 'meditation', group: 'Recovery' },
   ],
 };
 
