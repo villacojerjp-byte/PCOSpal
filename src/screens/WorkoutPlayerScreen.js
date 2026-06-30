@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { View, Pressable, StyleSheet } from 'react-native';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
+import { View, Pressable } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import AppText from '../components/AppText';
+import SmartImage from '../components/SmartImage';
 import { colors, fonts, radius, shadow } from '../theme';
 import { workout } from '../data/content';
 
@@ -59,9 +59,8 @@ export default function WorkoutPlayerScreen({ navigation }) {
           </AppText>
         </AppText>
 
-        <View style={{ marginTop: 26, width: 280, height: 280, borderRadius: 140, borderWidth: 6, borderColor: colors.primaryLight, alignItems: 'center', justifyContent: 'center', overflow: 'hidden', ...shadow.card }}>
-          <LinearGradient colors={['#FFFFFF', colors.primarySoft]} style={StyleSheet.absoluteFill} />
-          <MaterialCommunityIcons name={ex.icon} size={140} color={colors.primary} />
+        <View style={{ marginTop: 26, width: 280, height: 280, borderRadius: 140, borderWidth: 6, borderColor: colors.primaryLight, overflow: 'hidden', ...shadow.card }}>
+          <SmartImage source={{ uri: ex.image }} style={{ width: '100%', height: '100%' }} icon="barbell-outline" />
         </View>
 
         <AppText font={fonts.bodyBold} color={colors.textMuted} style={{ fontSize: 15, marginTop: 28 }}>
@@ -85,9 +84,7 @@ export default function WorkoutPlayerScreen({ navigation }) {
       {/* Next preview */}
       {next ? (
         <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: colors.card, marginHorizontal: 20, marginBottom: insets.bottom + 16, borderRadius: radius.lg, padding: 12, ...shadow.soft }}>
-          <View style={{ width: 52, height: 52, borderRadius: radius.md, backgroundColor: colors.primarySoft, alignItems: 'center', justifyContent: 'center' }}>
-            <MaterialCommunityIcons name={next.icon} size={30} color={colors.primary} />
-          </View>
+          <SmartImage source={{ uri: next.image }} radius={radius.md} style={{ width: 52, height: 52 }} icon="barbell-outline" />
           <View style={{ marginLeft: 12 }}>
             <AppText font={fonts.bodyBold} color={colors.primary} style={{ fontSize: 12 }}>
               Next

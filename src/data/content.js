@@ -208,18 +208,22 @@ export const logActions = [
   { id: 'cycle', label: 'Log Cycle', emoji: '🩸' },
 ];
 
-// Exercises use MaterialCommunityIcons human-pose icons (this is a no-equipment
-// bodyweight workout) instead of stock photos that wouldn't match the move.
+// Exercise photos come from the open Free Exercise DB, where each image is
+// mapped to a named exercise — so the picture always matches the move. We use
+// the "action" frame (verified to show the exercise) for each.
+const exImg = (id, frame = 0) =>
+  `https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/${id}/${frame}.jpg`;
+
 export const workout = {
   title: 'Metabolic Balance Builder',
   duration: '7 Min',
   equipment: 'No Equipment',
   exercises: [
-    { name: 'Dead Bugs', value: 29, unit: 'reps', icon: 'human-handsup', group: 'Core' },
-    { name: 'Warrior III Pose', value: 30, unit: 'sec', step: '2/5', icon: 'yoga', group: 'Balance' },
-    { name: 'Glute Bridges', value: 15, unit: 'reps', step: '3/5', icon: 'gymnastics', group: 'Lower body' },
-    { name: 'Bird Dogs', value: 12, unit: 'reps', step: '4/5', icon: 'yoga', group: 'Stability' },
-    { name: 'Child’s Pose', value: 45, unit: 'sec', step: '5/5', icon: 'meditation', group: 'Recovery' },
+    { name: 'Bodyweight Squat', value: 15, unit: 'reps', icon: 'human-male', group: 'Lower body', image: exImg('Bodyweight_Squat', 1) },
+    { name: 'Glute Bridge', value: 20, unit: 'reps', step: '2/5', icon: 'gymnastics', group: 'Glutes', image: exImg('Butt_Lift_Bridge', 0) },
+    { name: 'Plank', value: 45, unit: 'sec', step: '3/5', icon: 'yoga', group: 'Core', image: exImg('Plank', 1) },
+    { name: 'Side Plank', value: 30, unit: 'sec', step: '4/5', icon: 'yoga', group: 'Obliques', image: exImg('Side_Bridge', 0) },
+    { name: 'Reverse Crunch', value: 15, unit: 'reps', step: '5/5', icon: 'human-handsup', group: 'Abs', image: exImg('Reverse_Crunch', 0) },
   ],
 };
 
