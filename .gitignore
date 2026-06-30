@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 
+# local Claude Code session settings
+.claude/
+
 # Expo
 .expo/
 dist/
