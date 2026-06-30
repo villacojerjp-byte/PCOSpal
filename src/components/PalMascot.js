@@ -1,16 +1,23 @@
+import { useId } from 'react';
 import Svg, { Defs, LinearGradient, Stop, Path, Circle, Ellipse, Rect } from 'react-native-svg';
 
 // The PCOS Pal berry mascot, drawn as resolution-independent SVG.
 // Body is purple to match the brand theme; leaves stay green for contrast.
+// Gradient ids are made unique per instance so they resolve correctly on web
+// (shared SVG gradient ids fail to render with react-native-web).
 export default function PalMascot({ size = 96 }) {
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, '');
+  const bodyId = `pal-body-${uid}`;
+  const leafId = `pal-leaf-${uid}`;
+
   return (
     <Svg width={size} height={size} viewBox="0 0 100 100">
       <Defs>
-        <LinearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+        <LinearGradient id={bodyId} x1="0" y1="0" x2="0" y2="1">
           <Stop offset="0" stopColor="#A78BFA" />
           <Stop offset="1" stopColor="#7C3AED" />
         </LinearGradient>
-        <LinearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+        <LinearGradient id={leafId} x1="0" y1="0" x2="1" y2="1">
           <Stop offset="0" stopColor="#3BC9A6" />
           <Stop offset="1" stopColor="#159B86" />
         </LinearGradient>
@@ -26,11 +33,11 @@ export default function PalMascot({ size = 96 }) {
       />
 
       {/* leaves */}
-      <Path d="M50 33 C40 20 20 22 18 33 C30 40 46 40 50 33 Z" fill="url(#leaf)" />
-      <Path d="M50 33 C60 20 80 22 82 33 C70 40 54 40 50 33 Z" fill="url(#leaf)" />
+      <Path d="M50 33 C40 20 20 22 18 33 C30 40 46 40 50 33 Z" fill={`url(#${leafId})`} />
+      <Path d="M50 33 C60 20 80 22 82 33 C70 40 54 40 50 33 Z" fill={`url(#${leafId})`} />
 
       {/* body */}
-      <Rect x={20} y={32} width={60} height={56} rx={28} fill="url(#body)" />
+      <Rect x={20} y={32} width={60} height={56} rx={28} fill={`url(#${bodyId})`} />
 
       {/* eyes */}
       <Circle cx={40} cy={56} r={11} fill="#FFFFFF" />

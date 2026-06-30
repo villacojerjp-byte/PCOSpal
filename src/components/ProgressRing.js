@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { View } from 'react-native';
 import Svg, { Circle, Defs, LinearGradient, Stop } from 'react-native-svg';
 import AppText from './AppText';
@@ -15,12 +16,13 @@ export default function ProgressRing({
   const c = 2 * Math.PI * r;
   const clamped = Math.max(0, Math.min(1, progress));
   const offset = c * (1 - clamped);
+  const gradId = `ring-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
 
   return (
     <View style={{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }}>
       <Svg width={size} height={size}>
         <Defs>
-          <LinearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+          <LinearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
             <Stop offset="0" stopColor={colors.primaryLight} />
             <Stop offset="1" stopColor={colors.primary} />
           </LinearGradient>
@@ -37,7 +39,7 @@ export default function ProgressRing({
           cx={size / 2}
           cy={size / 2}
           r={r}
-          stroke="url(#ringGrad)"
+          stroke={`url(#${gradId})`}
           strokeWidth={stroke}
           strokeLinecap="round"
           strokeDasharray={c}

@@ -6,6 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 import AppText from '../components/AppText';
 import PalMascot from '../components/PalMascot';
 import PrimaryButton from '../components/PrimaryButton';
+import { useUser } from '../context/UserContext';
 import { colors, fonts, radius, shadow } from '../theme';
 
 const STEPS = [
@@ -120,6 +121,7 @@ function OptionRow({ option, selected, multi, onPress }) {
 
 export default function OnboardingScreen({ navigation }) {
   const insets = useSafeAreaInsets();
+  const { updateProfile } = useUser();
   const [phase, setPhase] = useState('quiz'); // quiz | building | ready
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -258,7 +260,22 @@ export default function OnboardingScreen({ navigation }) {
           </View>
         </View>
 
-        <PrimaryButton label="Start my journey" icon="sparkles" onPress={() => navigation.replace('Main')} style={{ width: '100%' }} />
+        <PrimaryButton
+          label="Start my journey"
+          icon="sparkles"
+          onPress={() => {
+            updateProfile({
+              name: name.trim() || 'Friend',
+              goal: answers.goal,
+              symptoms: answers.symptoms || [],
+              diagnosed: answers.diagnosed,
+              activity: answers.activity,
+              onboarded: true,
+            });
+            navigation.replace('Main');
+          }}
+          style={{ width: '100%' }}
+        />
       </View>
     );
   }

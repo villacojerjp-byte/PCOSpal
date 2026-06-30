@@ -6,6 +6,7 @@ import Screen from '../components/Screen';
 import AppText from '../components/AppText';
 import LessonCard from '../components/LessonCard';
 import PalMascot from '../components/PalMascot';
+import { useUser } from '../context/UserContext';
 import { colors, fonts, gradients, radius, shadow } from '../theme';
 import { weekDays, todaysLessons, userProfile } from '../data/content';
 
@@ -13,6 +14,7 @@ const TODAY_INDEX = 3; // Wed
 
 export default function HomeScreen({ navigation }) {
   const [selected, setSelected] = useState(TODAY_INDEX);
+  const { profile } = useUser();
 
   return (
     <Screen>
@@ -24,7 +26,7 @@ export default function HomeScreen({ navigation }) {
               Good morning,
             </AppText>
             <AppText font={fonts.serif} color={colors.heading} style={{ fontSize: 28, marginTop: 2 }}>
-              {userProfile.name}
+              {profile.name}
             </AppText>
           </View>
           <View style={[{ flexDirection: 'row', alignItems: 'center', backgroundColor: colors.card, paddingHorizontal: 12, paddingVertical: 8, borderRadius: radius.pill, marginRight: 10 }, shadow.soft]}>

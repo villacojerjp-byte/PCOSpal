@@ -12,6 +12,7 @@ import { Nunito_400Regular, Nunito_600SemiBold, Nunito_700Bold, Nunito_800ExtraB
 import { Caveat_400Regular, Caveat_700Bold } from '@expo-google-fonts/caveat';
 
 import RootNavigator from './src/navigation/RootNavigator';
+import { UserProvider } from './src/context/UserContext';
 import { colors } from './src/theme';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -44,12 +45,14 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <View style={{ flex: 1, backgroundColor: colors.bg }} onLayout={onReady}>
-        <StatusBar style="dark" />
-        <NavigationContainer theme={navTheme}>
-          <RootNavigator />
-        </NavigationContainer>
-      </View>
+      <UserProvider>
+        <View style={{ flex: 1, backgroundColor: colors.bg }} onLayout={onReady}>
+          <StatusBar style="dark" />
+          <NavigationContainer theme={navTheme}>
+            <RootNavigator />
+          </NavigationContainer>
+        </View>
+      </UserProvider>
     </SafeAreaProvider>
   );
 }
